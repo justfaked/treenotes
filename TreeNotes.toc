@@ -1,0 +1,9 @@
+## Interface: 20505
+## Title: TreeNotes
+## Notes: A hierarchical note-taking addon with support for raid symbols
+## Author: YourName
+## Version: 1.0.0
+## SavedVariables: TreeNotesDB
+
+Core.lua
+UI.lua
