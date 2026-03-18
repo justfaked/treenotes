@@ -7,7 +7,15 @@ local currentPage = nil
 
 -- Main window creation
 function TreeNotes:CreateMainWindow()
+    print("TreeNotes: CreateMainWindow called")
+
     local frame = CreateFrame("Frame", "TreeNotesMainFrame", UIParent, "BasicFrameTemplateWithInset")
+
+    if not frame then
+        print("TreeNotes: ERROR - CreateFrame returned nil!")
+        return
+    end
+    print("TreeNotes: Frame created")
     frame:SetSize(800, 600)
     frame:SetPoint("CENTER")
     frame:SetMovable(true)
@@ -130,13 +138,24 @@ function TreeNotes:CreateMainWindow()
 end
 
 function TreeNotes:ToggleUI()
+    print("TreeNotes: ToggleUI called")
+
     if not self.mainFrame then
+        print("TreeNotes: Creating main window...")
         self:CreateMainWindow()
+
+        if not self.mainFrame then
+            print("TreeNotes: ERROR - Failed to create main window!")
+            return
+        end
+        print("TreeNotes: Main window created successfully")
     end
 
     if self.mainFrame:IsShown() then
+        print("TreeNotes: Hiding window")
         self.mainFrame:Hide()
     else
+        print("TreeNotes: Showing window")
         self:RefreshTree()
         self.mainFrame:Show()
     end
